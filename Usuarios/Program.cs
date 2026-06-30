@@ -9,3 +9,6 @@ List<Usuario> datos = JsonSerializer.Deserialize<List<Usuario>>(responseBody);
 for (int i = 0; i < 5; i++){
     Console.WriteLine("Nombre: "+datos[i].name+" Correo: "+datos[i].email+" Direccion: "+datos[i].address.street+" "+datos[i].address.suite);
 }
+
+string json = JsonSerializer.Serialize(datos,new JsonSerializerOptions {WriteIndented = true});
+File.WriteAllText("Datos.json",json);
